@@ -2,6 +2,7 @@
 
 namespace App\Exceptions;
 
+use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -57,6 +58,12 @@ class Handler extends ExceptionHandler
                     Log::error($e->errors());
 
                     return $this->invalidJson($request, $e);
+                } elseif ($e instanceof AuthenticationException) {
+                    Log::error("Unauthenticated.");
+
+                    return response()->json([
+                        'message' => 'Unauthenticated.'
+                    ], 401);
                 } else {
                     return response()->json([
                         'message' => 'Internal Server Error'

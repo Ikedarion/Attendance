@@ -2,9 +2,11 @@
 
 namespace App\Http\Requests;
 
+use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
-class ContactRequest extends FormRequest
+class RegisterRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,8 +27,8 @@ class ContactRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255'],
-            'tel' => ['required', 'numeric', 'digits_between:10,11'],
+            'email' => ['required', 'string', 'email', 'max:255', Rule::unique(User::class)],
+            'password' => ['required', 'string', 'min:8']
         ];
     }
 
@@ -38,11 +40,12 @@ class ContactRequest extends FormRequest
             'name.max' => '名前を255文字以下で入力してください',
             'email.required' => 'メールアドレスを入力してください',
             'email.string' => 'メールアドレスを文字列で入力してください',
-            'email.email' => '有効なメールアドレス形式を入力してください',
+            'email.email' => 'メールアドレスを有効な形式で入力してください',
             'email.max' => 'メールアドレスを255文字以下で入力してください',
-            'tel.required' => '電話番号を入力してください',
-            'tel.numeric' => '電話番号を数値で入力してください',
-            'tel.digits_between' => '電話番号を10桁から11桁の間で入力してください',
+            'email.unique' => 'メールアドレスは既に存在しています',
+            'password.required' => 'パスワードを入力してください',
+            'password.string' => 'パスワードを文字列で入力してください',
+            'password.min' => 'パスワードを8文字以上で入力してください'
         ];
     }
 }
