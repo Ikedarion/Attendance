@@ -11,7 +11,7 @@ class UserController extends Controller
     public function show()
     {
         try {
-            return User::with(['shops_reservations', 'shops_likes'])->find(Auth::id());
+            return User::with('attendances')->find(Auth::id());
         } catch (Throwable $e) {
             throw $e;
         }
