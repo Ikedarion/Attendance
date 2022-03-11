@@ -42,7 +42,6 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-<<<<<<< HEAD
     public function shops_reservations()
     {
         return $this->belongsToMany(Shop::class, 'reservations')->withPivot('id', 'date', 'time', 'number');
@@ -51,10 +50,5 @@ class User extends Authenticatable
     public function shops_likes()
     {
         return $this->belongsToMany(Shop::class, 'likes')->withPivot('id');
-=======
-    public function attendances()
-    {
-        return $this->hasMany(Attendance::class);
->>>>>>> fe7f3d706bcc8ea2c91a437dcd571d401b4d1d29
     }
 }
