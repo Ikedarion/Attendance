@@ -1,19 +1,19 @@
 <?php
 
-use App\Http\Controllers\ItemController;
-use App\Http\Controllers\CartItemController;
-use App\Http\Controllers\PurchaseController;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/items', [ItemController::class, 'index']);
-Route::get('/items/search', [ItemController::class, 'search']);
-Route::get('/items/{item_id}', [ItemController::class, 'show']);
+/*
+|--------------------------------------------------------------------------
+| API Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register API routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| is assigned the "api" middleware group. Enjoy building your API!
+|
+*/
 
-Route::middleware('auth:sanctum')->group(function () {
-    Route::get('/cart_items', [CartItemController::class, 'index']);
-    Route::post('/cart_items', [CartItemController::class, 'store']);
-    Route::patch('/cart_items/{cart_item_id}', [CartItemController::class, 'update']);
-    Route::delete('/cart_items/{cart_item_id}', [CartItemController::class, 'destroy']);
-
-    Route::post('/purchases', [PurchaseController::class, 'store']);
+Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+    return $request->user();
 });
