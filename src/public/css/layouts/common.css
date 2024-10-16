@@ -1,0 +1,32 @@
+.header {
+    background-color: white;
+}
+
+.header__inner {
+    border-bottom: 1px solid #f1f1f1;
+    padding: 25px 45px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header__link {
+    display: flex;
+}
+
+.header__logo {
+    text-align: left;
+    font-size: 27px;
+    text-decoration: none;
+    color: black;
+    font-weight: bolder;
+    color: rgb(52, 52, 52);
+}
+
+.footer {
+    padding: 15px;
+}
+
+.footer__content {
+    text-align: center;
+}
