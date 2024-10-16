@@ -1,0 +1,66 @@
+.logout__link,
+.users__link,
+.date__link {
+    border: none;
+    background-color: #ffffff;
+    padding-left: 35px;
+    font-size: 15px;
+    font-family: 'M PLUS 1p', sans-serif;
+    text-shadow: 0.3px 0.3px 0;
+    color: rgb(52, 52, 52);
+}
+
+.alert-info {
+    font-family:monospace;
+    font-size: 22px;
+    color: rgb(48, 48, 48);
+    margin-bottom: 10px;
+}
+
+.attendance-form {
+    margin: 0 auto;
+    text-align: center;
+    padding-top: 37px;
+    height: 690px;
+    background-color: #f7f6f6;
+}
+
+.attendance-form__inner {
+    margin: 0 auto;
+}
+
+.form__group {
+    width: 70%;
+    margin: 0 auto;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+
+.attendance-form__btn-submit {
+    margin: 26px;
+    height: 200px;
+    width: 500px;
+    border: none;
+    border-radius: 7px;
+    background-color: white;
+    font-size: 20px;
+    font-family: 'M PLUS 1p',sans-serif;
+    text-shadow: 0.7px 0.7px 0;
+    color: rgb(64, 64, 64);
+    transition: color 0.3s;
+}
+
+.attendance-form__btn-submit:disabled {
+    color: #b0b0b0;
+}
+
+.attendance-form__btn-submit:disabled:first-child {
+    margin-left: 25px;
+}
+
+.attendance-form__btn-submit:first-child {
+    margin-left: 0px;
+}
+

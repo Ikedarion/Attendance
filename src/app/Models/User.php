@@ -8,7 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -21,6 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'is_admin'
     ];
 
     /**
@@ -41,4 +42,24 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function attendances()
+    {
+        return $this->hasMany(Attendance::class);
+    }
+
+    public function scopeKeywordSearch($query,$keyword)
+    {
+        if(!empty($keyword)) {
+            $query ->where('name','like','%' . $keyword .'%');
+
+            if (mb_strpos($keyword,'管理者') !== false){
+                $query->orWhere('is_admin',1);
+            }
+
+            if (mb_strpos($keyword,'一般従業員') !== false){
+                $query->orWhere('is_admin',0);
+            }
+        }
+    }
 }
