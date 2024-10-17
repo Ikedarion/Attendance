@@ -16,7 +16,7 @@ services:
 
     mysql:
         image: mysql:8.0.26
-        platform: linux/amd64  # プラットフォームを指定
+        platform: linux/x86_64
         environment:
             MYSQL_ROOT_PASSWORD: root
             MYSQL_DATABASE: laravel_db
