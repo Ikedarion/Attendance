@@ -21,10 +21,6 @@
 
 @section('content')
 <div class="attendance-form">
-    <div class="alert alert-info">
-        {{ Auth::user()->name }}さんお疲れ様です！
-    </div>
-
     @if(session('message'))
     <div class="alert alert-success">
         {{session('message')}}
@@ -37,9 +33,13 @@
     </div>
     @endif
 
+    <div class="alert alert-info">
+        {{ Auth::user()->name }}さんお疲れ様です！
+    </div>
+
     <div class="attendance-form__inner">
         <div class="form__group">
-            @if($attendance && $attendance->clock_out_time === null)
+            @if($isClockedIn)
             <!-- 出勤中なので出勤ボタンを無効化 -->
             <form class="form" action="{{route('clock-in')}}" method="post">
                 <input class="attendance-form__btn-submit" type="submit" name="clock_in_time" value="勤務開始" disabled>
@@ -52,7 +52,7 @@
             @endif
 
 
-            @if($break && $break->break_start_time !== null && $break->break_end_time === null)
+            @if($isOnBreak)
             <!-- 休憩中なので、退勤ボタンを無効化 -->
             <form class="form" action="{{route('clock-out')}}" method="post">
                 <input class="attendance-form__btn-submit" type="submit" name="clock_out_time" value="勤務終了" disabled>
@@ -67,7 +67,7 @@
 
 
         <div class="form__group">
-            @if($break && $break->break_start_time !== null && $break->break_end_time === null )
+            @if($isOnBreak)
             <form class="form" action="{{route('break.start')}}" method="post">
                 <input class="attendance-form__btn-submit" type="submit" name="break_start_time" value="休憩開始" disabled>
             </form>

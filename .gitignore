@@ -15,3 +15,7 @@
 /src/.idea
 /src/.vscode
 .DS_Store
+docker/mysql/data/
+
+
+

@@ -17,15 +17,19 @@
 @section('content')
 <div class="attendance__content">
     @if(session('message'))
-    <div class="alert alert-success" style="font-size: 16px; color: #5f5f5f; background-color: #efefef; padding: 10px; margin:0 auto; font-size: 17px;">
+    <div class="alert alert-success">
         {{session('message')}}
     </div>
     @endif
 
     @if ($errors->any())
-    <div style="color: rgb(214, 68, 68); padding-top: 20px; margin:0 auto; font-size: 17px;">
+    <div class="alert alert-danger">
         エラーが発生しています。勤怠情報が更新されていません。
     </div>
+    @endif
+
+    @if($attendances->isEmpty())
+    <div class="alert alert-danger">指定された月の勤怠記録はありません。</div>
     @endif
 
 
@@ -33,9 +37,6 @@
     $user = App\Models\User::find($userID);
     @endphp
     <p class="user-name">{{ $user->name }}さんの勤怠記録</p>
-    @if($attendances->isEmpty())
-    <span style="color: rgb(214, 68, 68);">指定された月の勤怠記録はありません。</span>
-    @endif
 
     <div class="month-selector">
         <form action="{{ route('attendance.show', ['id' => $userID,'year' => $year, 'month' => $month]) }}" method="GET">
@@ -50,9 +51,9 @@
             <select name="month" id="month" onchange="this.form.submit()" style="color: #6f6f6f; border: 1px solid #7f7f7f">
                 @for ($m = 1; $m <= 12; $m++)
                     <option value=" {{ $m }}" {{ $m == $month ? 'selected' : '' }}>
-                {{ $m }}月
-                </option>
-                @endfor
+                    {{ $m }}月
+                    </option>
+                    @endfor
             </select>
         </form>
     </div>
@@ -115,17 +116,17 @@
                                     </div>
                                 </div>
                                 @error('date')
-                                <div class="modal-alert" style="color: #e95d5d;">
+                                <div class="modal-alert" style="color: #db2727; font-weight: bold;">
                                     {{ $message }}
                                 </div>
                                 @enderror
                                 @error('clock_out_time')
-                                <div class="modal-alert" style="color: #e95d5d;">
+                                <div class="modal-alert" style="color: #db2727; font-weight: bold;">
                                     {{ $message }}
                                 </div>
                                 @enderror
                                 @error('clock_in_time')
-                                <div class="modal-alert" style="color: #e95d5d;">
+                                <div class="modal-alert" style="color: #db2727; font-weight: bold;">
                                     {{ $message }}
                                 </div>
                                 @enderror
@@ -143,12 +144,12 @@
                                         </div>
                                     </div>
                                     @error("break_times.$break_time->id.break_start_time")
-                                    <div class="modal-alert" style="color: #e95d5d;">
+                                    <div class="modal-alert" style="color: #db2727; font-weight: bold;">
                                         {{ $message }}
                                     </div>
                                     @enderror
                                     @error("break_times.$break_time->id.break_end_time")
-                                    <div class="modal-alert" style="color: #e95d5d;">
+                                    <div class="modal-alert" style="color: #db2727; font-weight: bold;">
                                         {{ $message }}
                                     </div>
                                     @enderror

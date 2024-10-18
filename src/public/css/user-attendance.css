@@ -5,7 +5,7 @@
     padding-left: 35px;
     font-size: 15px;
     font-family: 'M PLUS 1p', sans-serif;
-    text-shadow: 0.3px 0.3px 0;
+    text-shadow: 0.5px 0.5px 0.5px;
     color: rgb(52, 52, 52);
 }
 
@@ -18,10 +18,28 @@
     overflow-y: auto;
 }
 
+.alert-success {
+    color: #767780;
+    font-weight: bold;
+    background-color: #ebebebb0;
+    padding: 15px;
+    margin: 0 auto;
+    font-size: 15px;
+}
+
+.alert-danger {
+    color: #db2727;
+    font-weight: bold;
+    background-color: #ebebebb0;
+    padding: 15px;
+    margin: 0 auto;
+    font-size: 15px;
+}
+
 .user-name {
     font-weight: bold;
     margin-bottom: 0px;
-    padding-top: 30px;
+    padding-top: 25px;
     font-size: 17px;
 
 }
@@ -39,13 +57,13 @@
     text-align: center;
     width: 70%;
     white-space: nowrap;
-    border-top: 1px solid #909090;
+    border-top: 1px solid #979797;
     margin-top: 25px;
 }
 
 .attendance__row {
     line-height: 50px;
-    border-bottom: 1px solid #909090;
+    border-bottom: 1px solid #979797;
     text-align: center;
     justify-content: space-around;
 }
@@ -67,7 +85,8 @@
 }
 
 .user__detail-btn {
-    background: linear-gradient(30deg, #1a68b7dd, #1a5fa3de);
+    background: #4a7fbb;
+    box-shadow: 1.2px 1.2px 1.4px rgb(40, 69, 104);
     border: none;
     border-radius: 2px;
     text-decoration: none;
@@ -133,7 +152,7 @@
 
 .label {
     font-size: 15px;
-    text-shadow: 0.2px 0.2px 0.2px black;
+    font-weight: bold;
 }
 
 

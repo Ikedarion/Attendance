@@ -19,13 +19,25 @@ class ClockController extends Controller
             ->whereDate('clock_in_time', today())
             ->first();
 
+        if (!$attendance) {
+            $attendance = Attendance::where('user_id', Auth::id())
+                ->whereDate('clock_in_time', today()->subDay()) // 前日をチェック
+                ->whereNull('clock_out_time') // 退勤していない場合
+                ->first();
+        }
+
         $break = BreakTime::where('user_id', Auth::id())
-            ->whereDate('created_at', today())
-            ->whereNull('break_end_time')
-            ->first();
+        ->where(function ($query) {
+            $query->whereDate('created_at', today())
+                ->orWhereDate('created_at', today()->subDay());
+        })
+        ->whereNull('break_end_time')
+        ->first();
 
+        $isClockedIn = $attendance && $attendance->clock_out_time === null;
+        $isOnBreak = $break && $break->break_start_time !== null && $break->break_end_time === null;
 
-        return view('index',compact('attendance','break'));
+        return view('index',compact('isClockedIn', 'isOnBreak'));
     }
 
     public function clockIn()
@@ -49,10 +61,7 @@ class ClockController extends Controller
         ]);
 
         return redirect()->back()->with('message', '出勤時間が登録されました');
-
     }
-
-
 
     public function clockOut()
     {
@@ -79,7 +88,7 @@ class ClockController extends Controller
             } else {
                 // 日を跨ぐ場合の処理
                 $clock_out =
-                $clockInTime->copy()->endOfDay()->subMinute(1);
+                $clockInTime->copy()->endOfDay()->subSecond();
                 $attendance->clock_out_time = $clock_out;
                 $attendance->save();
 
@@ -148,7 +157,6 @@ class ClockController extends Controller
             return redirect()->back()->with('error', 'エラーが発生しました');
         }
     }
-
 
 
     public function breakEnd()

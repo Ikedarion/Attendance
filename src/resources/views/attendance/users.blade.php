@@ -17,13 +17,13 @@
 @section('content')
 <div class="users__content">
     @if(session('message'))
-    <div class="alert alert-success" style="color: rgb(39, 39, 39); background-color: #f1f1f1; padding: 15px; margin:0 auto;">
+    <div class="alert alert-success">
         {{session('message')}}
     </div>
     @endif
 
     @if ($errors->any())
-    <div class="alert alert-danger" style="color: #db2727;  padding: 15px; margin:0 auto; font-size: 18px;">
+    <div class="alert alert-danger">
         エラーが発生しています。ユーザー情報が更新されていません:
     </div>
     @endif
@@ -84,7 +84,7 @@
                                     <input type="text" id="name" name="name" value="{{$user->name}}" class="modal-form__text">
                                 </div>
                                 @error('name')
-                                <div class="modal-alert-name" style="color: #e95d5d;">
+                                <div class="modal-alert-name" style="color: #db2727; font-weight: bold;">
                                     {{ $message }}
                                 </div>
                                 @enderror
@@ -94,7 +94,7 @@
                                     <input type="email" id="email" name="email" value="{{$user->email}}" class="modal-form__text">
                                 </div>
                                 @error('email')
-                                <div class="modal-alert-email" style="color: #e95d5d;">
+                                <div class="modal-alert-email" style="color: #db2727; font-weight: bold;">
                                     {{ $message }}
                                 </div>
                                 @enderror
