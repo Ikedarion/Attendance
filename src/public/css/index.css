@@ -4,28 +4,55 @@
     border: none;
     background-color: #ffffff;
     padding-left: 35px;
-    font-size: 15px;
-    font-family: 'M PLUS 1p', sans-serif;
+    font-size: 13px;
     text-shadow: 0.3px 0.3px 0;
     color: rgb(52, 52, 52);
+    font-family: monospace;
+    border: none;
+}
+
+.attendance-form {
+    margin: 0 auto;
+    text-align: center;
+    padding: 0px 0;
+    height: 690px;
+    background-color: #f7f6f6;
+    overflow-x: auto;
+}
+
+.attendance-form__inner {
+    margin: 0 auto;
 }
 
 .alert-success {
-    color: #767780;
+    color: #2f5939;
     font-weight: bold;
-    background-color: #ebebebb0;
+    background-color: #d3e6d582;
     padding: 15px;
+    padding: 10px;
     margin: 0 auto;
-    font-size: 15px;
+    margin-top: 20px;
+    font-size: 12.7px;
+    width: 600px;
+    height: 42px;
+    border: 1px solid #0d5925;
+    border-radius: 5px;
+    box-shadow: 0px 2px 1px rgba(151, 28, 28, 0.132);
 }
 
 .alert-danger {
-    color: #db2727;
+    color: #d93025;
     font-weight: bold;
-    background-color: #ebebebb0;
-    padding: 15px;
+    background-color: #ffe9e9df;
+    padding: 10px;
     margin: 0 auto;
-    font-size: 15px;
+    margin-top: 20px;
+    font-size: 12.7px;
+    width: 600px;
+    height: 42px;
+    border-radius: 2px;
+    border: 1px solid #b22222;
+    box-shadow: 0px 2px 1px rgba(151, 28, 28, 0.132);
 }
 
 .alert-info {
@@ -37,16 +64,6 @@
     padding-top: 40px;
 }
 
-.attendance-form {
-    margin: 0 auto;
-    text-align: center;
-    height: 690px;
-    background-color: #f7f6f6;
-}
-
-.attendance-form__inner {
-    margin: 0 auto;
-}
 
 .form__group {
     width: 70%;
@@ -67,8 +84,9 @@
     font-size: 20px;
     font-family: 'M PLUS 1p',sans-serif;
     font-weight: bold;
-    color: #373737eb;
+    color: #373737;
     transition: color 0.3s;
+    font-family: monospace;
 }
 
 .attendance-form__btn-submit:disabled {

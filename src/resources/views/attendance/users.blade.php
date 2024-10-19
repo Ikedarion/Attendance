@@ -24,7 +24,7 @@
 
     @if ($errors->any())
     <div class="alert alert-danger">
-        エラーが発生しています。ユーザー情報が更新されていません:
+        エラーが発生しています。ユーザー情報が更新されていません。
     </div>
     @endif
 
@@ -33,20 +33,15 @@
     </div>
 
 
-    <div class="search-form__items">
-        <form class="search-form" action="{{ route('attendance.search') }}" method="get">
-            <div class="search-form__text">
-                <input class="search-form__text-input" type="text" name="keyword" placeholder="名前や役割を検索してください" value="{{ request('keyword') }}">
-            </div>
-            <div class="form__button">
-                <input class="form__button-submit" type="submit" value="検索">
-                <a href="/attendance/users" class="form__button-reset">リセット</a>
-            </div>
-        </form>
-        <div class="users__pagination">
-            {{ $users->links('vendor.pagination.bootstrap-4') }}
+    <form class="search-form" action="{{ route('attendance.search') }}" method="get">
+        <div class="search-form__text">
+            <input class="search-form__text-input" type="text" name="keyword" placeholder="名前や役割を検索してください" value="{{ request('keyword') }}">
         </div>
-    </div>
+        <div class="form__button">
+            <input class="form__button-submit" type="submit" value="検索">
+            <a href="/attendance/users" class="form__button-reset">リセット</a>
+        </div>
+    </form>
     <table class="users__table">
         <tr class="users__row">
             <th class="users__label">ID</th>
@@ -84,7 +79,7 @@
                                     <input type="text" id="name" name="name" value="{{$user->name}}" class="modal-form__text">
                                 </div>
                                 @error('name')
-                                <div class="modal-alert-name" style="color: #db2727; font-weight: bold;">
+                                <div class="modal-alert-name" style="color: #db2727; font-weight: bold; font-size: 15px;">
                                     {{ $message }}
                                 </div>
                                 @enderror
@@ -94,7 +89,7 @@
                                     <input type="email" id="email" name="email" value="{{$user->email}}" class="modal-form__text">
                                 </div>
                                 @error('email')
-                                <div class="modal-alert-email" style="color: #db2727; font-weight: bold;">
+                                <div class="modal-alert-email" style="color: #db2727; font-weight: bold; font-size: 15px;">
                                     {{ $message }}
                                 </div>
                                 @enderror
@@ -137,5 +132,8 @@
 
         @endforeach
     </table>
+    <div class="users__pagination">
+        {{ $users->links('vendor.pagination.bootstrap-4') }}
+    </div>
 </div>
 @endsection

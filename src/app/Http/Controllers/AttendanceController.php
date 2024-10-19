@@ -48,10 +48,10 @@ class AttendanceController extends Controller
             'name' => 'required|string',
             'email' => 'required|email|unique:users,email,' . $user->id,
         ], [
-            'name.required' => 'お名前を入力してください。',
-            'email.required' => 'メールアドレスを入力してください。',
-            'email.email' => '有効なメールアドレスを入力してください。',
-            'email.unique' => 'このメールアドレスはすでに使用されています。',
+            'name.required' => '※お名前を入力してください。',
+            'email.required' => '※メールアドレスを入力してください。',
+            'email.email' => '※有効なメールアドレスを入力してください。',
+            'email.unique' => '※このメールアドレスはすでに使用されています。',
         ]);
 
 

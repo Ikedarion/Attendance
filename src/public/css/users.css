@@ -3,10 +3,10 @@
     border: none;
     background-color: #ffffff;
     padding-left: 35px;
-    font-size: 15px;
-    font-family: 'M PLUS 1p', sans-serif;
-    text-shadow: 0.5px 0.5px 0.5px;
+    font-size: 13px;
+    text-shadow: 0.3px 0.3px 0;
     color: rgb(52, 52, 52);
+    font-family: monospace;
 }
 
 .users__content {
@@ -19,53 +19,59 @@
 }
 
 .alert-success {
-    color: #767780;
+    color: #2f5939;
     font-weight: bold;
-    background-color: #ebebebb0;
+    background-color: #d3e6d582;
     padding: 15px;
+    padding: 10px;
     margin: 0 auto;
-    font-size: 15px;
+    margin-top: 20px;
+    font-size: 12.7px;
+    width: 600px;
+    height: 42px;
+    border: 1px solid #0d5925;
+    border-radius: 5px;
+    box-shadow: 0px 2px 1px rgba(28, 151, 85, 0.132);
 }
 
 .alert-danger {
-    color: #db2727;
+    color: #d93025;
     font-weight: bold;
-    background-color: #ebebebb0;
-    padding: 15px;
+    background-color: #ffe9e9df;
+    padding: 10px;
     margin: 0 auto;
-    font-size: 15px;
+    margin-top: 20px;
+    font-size: 12.7px;
+    width: 600px;
+    height: 42px;
+    border-radius: 2px;
+    border: 1px solid #b22222;
+    box-shadow: 0px 2px 1px rgba(151, 28, 28, 0.132);
 }
 
 .users__header {
-    font-size: large;
+    font-size: 19px;
     font-weight: bold;
-    margin-top: 35px;
-}
-
-.search-form__items {
-    padding-top: 35px;
-    width: 78%;
-    display: flex;
-    justify-content: space-between;
-    margin: 0 auto;
-    align-items: baseline;
-    overflow-x: auto;
+    margin: 35px;
+    font-family: monospace;
 }
 
 .search-form {
     display: flex;
     width: 100%;
     align-items: center;
+    justify-content: flex-end;
+    margin: 0 auto;
 }
 
 .search-form__text {
-    width: 20%;
-    margin-right: 1%;
+    width: 200px;
+    margin-right: 10px;
 }
 
 .search-form__text-input {
     width: 100%;
-    height: 25px;
+    height: 28px;
     padding: 0 5px;
     background-color: #fbfbfb;
     border: 1px solid #acacac;
@@ -78,10 +84,6 @@
     display: flex;
 }
 
-.form__button-submit {
-    margin-right: 3%;
-}
-
 .form__button-submit,
 .form__button-reset {
     width: auto;
@@ -90,44 +92,16 @@
     font-weight: bold;
     border: 0.5px solid #acacac;
     border-radius:px;
-    background-color: #efefef;
-    box-shadow: 0.3px 0.3px 1px #7d7d7d;
+    background-color: #f3f3f3;
+    box-shadow: 0.3px 0.3px 1.2px #7d7d7d;
     color: #8f8f8f;
-    padding: 3px 6px;
-    height: 25px;
+    padding: 5px 6px;
+    height: 28px;
     white-space: nowrap;
+    margin-right: 6px;
 }
 
-.pagination {
-    display: flex;
-    justify-content: center;
-    list-style: none;
-    margin-top: 0px;
-    overflow-x: auto;
-}
 
-.pagination li:not(.active) {
-    border: 1px solid #E0DFDE;
-    padding: 1px 5px;
-}
-
-.pagination a {
-    color: #4c7fbb;
-    text-decoration: none;
-    font-size: 15px;
-}
-
-.pagination__link {
-    text-decoration: none;
-}
-
-.active {
-    padding: 2px 5px;
-    border: 1px solid #4580c3;
-    background-color: #4c89da;
-    color: #FFF;
-    font-size: 15px;
-}
 
 .users__table {
     margin: 0 auto;
@@ -151,6 +125,8 @@
     padding: 6px 10px;
     white-space: nowrap;
     text-align: center;
+    font-size: 16.5px;
+    font-family: monospace;
 }
 
 .users__data {
@@ -171,8 +147,8 @@
 
 
 .user__detail-btn {
-    background: #4a7fbb;
-    box-shadow: 1.2px 1.2px 1.4px rgb(40, 69, 104);
+    background: linear-gradient(40deg, #6790d7, #5479b5);
+    box-shadow: 1.2px 1.2px 1.7px rgb(40, 69, 104);
     border: 0px;
     border-radius: 3px;
     text-decoration: none;
@@ -183,12 +159,12 @@
 }
 
 .user__data-btn-submit {
-    background: linear-gradient(40deg, #dfdfdf, #d1d1d1);
-    box-shadow: 1.2px 1.2px 1.4px #7d7d7d;
+    background: linear-gradient(40deg, #dfdfdf, #cbcbcb);
+    box-shadow: 1.2px 1.2px 1.7px #7d7d7d;
     border: 0px solid rgb(185, 201, 225);
     border-radius: 3px;
     text-decoration: none;
-    color: #717171;
+    color: #6d6d6d;
     padding: 7.8px 12px;
     font-size: 11px;
     font-weight: bold;
@@ -311,6 +287,37 @@
     border-radius: 2px;
     border: none;
     color: white;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    margin-top: 20px;
+    overflow-x: auto;
+}
+
+.pagination li:not(.active) {
+    border: 1px solid #E0DFDE;
+    padding: 1px 5px;
+}
+
+.pagination a {
+    color: #4c7fbb;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+.pagination__link {
+    text-decoration: none;
+}
+
+.active {
+    padding: 2px 5px;
+    border: 1px solid #4580c3;
+    background-color: #4c89da;
+    color: #FFF;
+    font-size: 15px;
 }
 
 

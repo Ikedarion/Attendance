@@ -36,7 +36,9 @@
 }
 
 .form__error-message {
-    color: rgb(206, 66, 66);
+    color: #f42b2b;
+    font-weight: bold;
+    font-size: 14px;
     position: absolute;
     top: 40px;
 }
