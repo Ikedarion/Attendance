@@ -3,8 +3,8 @@
     border: none;
     background-color: #ffffff;
     padding-left: 35px;
-    font-size: 15px;
-    font-family: 'M PLUS 1p', sans-serif;
+    font-size: 13px;
+    font-family: monospace;
     text-shadow: 0.3px 0.3px 0;
     color: rgb(52, 52, 52);
 }
