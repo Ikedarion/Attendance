@@ -19,14 +19,17 @@
 }
 
 .attendance__table-inner {
-    width: 85%;
+    width: 80%;
     margin: 0 auto;
     border-top: 1px solid #a7a4a4;
     margin-top: 45px;
 }
 
+.attendance__heading {
+    font-size: 19px;
+}
+
 .attendance__row {
-    line-height: 50px;
     border-bottom: 1px solid #a7a4a4;
     text-align: center;
     justify-content: space-around;
@@ -37,12 +40,15 @@
 }
 
 .attendance__label {
-    padding: 12px 0px;
+    padding: 18px 0px;
+    font-size: 16px;
+    font-family: monospace;
 }
 
 .attendance__data {
-    text-align: canter;
+    text-align: center;
     padding: 12px 0px;
+    line-height: 46px;
 }
 
 
