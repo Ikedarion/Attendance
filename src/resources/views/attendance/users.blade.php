@@ -24,7 +24,7 @@
 
     @if ($errors->any())
     <div class="alert alert-danger">
-        エラーが発生しています。ユーザー情報が更新されていません。
+        入力に誤りがあります。ユーザー情報が更新されていません。
     </div>
     @endif
 
