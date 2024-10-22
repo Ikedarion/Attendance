@@ -75,20 +75,20 @@
                                 @method('PATCH')
 
                                 <div class="modal-form__group">
-                                    <label class="label" for="name" class="modal-form__label">お名前</label>
-                                    <input type="text" id="name" name="name" value="{{$user->name}}" class="modal-form__text">
+                                    <label class="label" for="name_{{ $user->id }}" class="modal-form__label">お名前</label>
+                                    <input type="text" id="name_{{ $user->id }}" name="name_{{ $user->id }}" value="{{ old('name_' . $user->id, $user->name) }}" class="modal-form__text">
                                 </div>
-                                @error('name')
+                                @error('name_' . $user->id)
                                 <div class="modal-alert-name" style="color: #db2727; font-weight: bold; font-size: 15px;">
                                     {{ $message }}
                                 </div>
                                 @enderror
 
                                 <div class="modal-form__group">
-                                    <label class="label" for="email" class="modal-form__label">メールアドレス</label>
-                                    <input type="email" id="email" name="email" value="{{$user->email}}" class="modal-form__text">
+                                    <label class="label" for="email_{{ $user->id }}" class="modal-form__label">メールアドレス</label>
+                                    <input type="email" id="email_{{ $user->id }}" name="email_{{ $user->id }}" value="{{ old('email_' . $user->id, $user->email) }}" class="modal-form__text">
                                 </div>
-                                @error('email')
+                                @error('email_' . $user->id)
                                 <div class="modal-alert-email" style="color: #db2727; font-weight: bold; font-size: 15px;">
                                     {{ $message }}
                                 </div>

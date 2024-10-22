@@ -15,12 +15,12 @@ class AttendanceController extends Controller
         $today = Carbon::today();
 
         $attendances = Attendance::with('user')
-                                ->whereDate('date', $today)
-                                ->paginate(5);
+            ->whereDate('date', $today)
+            ->paginate(5);
 
         $date = Carbon::now();
 
-        return view('attendance.index',compact('attendances','date'));
+        return view('attendance.index', compact('attendances', 'date'));
     }
 
     public function list()
@@ -32,28 +32,36 @@ class AttendanceController extends Controller
     public function search(Request $request)
     {
         $users = User::with('attendances')
-                ->KeywordSearch($request->keyword)
-                ->paginate(9)
-                ->appends($request->query());
+            ->KeywordSearch($request->keyword)
+            ->paginate(9)
+            ->appends($request->query());
         $attendances = Attendance::all();
 
         return view('attendance.users', compact('users', 'attendances'));
     }
 
-    public function updateUser(Request $request) {
+    public function updateUser(Request $request)
+    {
         $user = User::find($request->id);
-        $userData = $request->only('name', 'email', 'is_admin');
+        $userData = $request->only('name_', 'email_', 'is_admin');
 
+        $nameField = 'name_' . $user->id;
+        $emailField = 'email_' . $user->id;
         $request->validate([
-            'name' => 'required|string',
-            'email' => 'required|email|unique:users,email,' . $user->id,
+            $nameField => 'required|string',
+            $emailField => 'required|email|unique:users,email,' . $user->id,
         ], [
-            'name.required' => '※お名前を入力してください。',
-            'email.required' => '※メールアドレスを入力してください。',
-            'email.email' => '※有効なメールアドレスを入力してください。',
-            'email.unique' => '※このメールアドレスはすでに使用されています。',
+            "$nameField.required" => '※お名前を入力してください。',
+            "$emailField.required" => '※メールアドレスを入力してください。',
+            "$emailField.email" => '※有効なメールアドレスを入力してください。',
+            "$emailField.unique" => '※このメールアドレスはすでに使用されています。',
         ]);
 
+        $userData = [
+            'name' => $request->$nameField,
+            'email' => $request->$emailField,
+            'is_admin' => $request->is_admin,
+        ];
 
         $user->update($userData);
 
@@ -79,22 +87,22 @@ class AttendanceController extends Controller
 
 
         $attendances = Attendance::whereNotNull('clock_out_time')
-                    ->with(['user', 'break_times'])
-                    ->where('user_id', $userID)
-                    ->whereBetween('date', [$startDate, $endDate]) // 年と月でフィルタリング
-                    ->orderBy('date', 'desc')
-                    ->get();
+            ->with(['user', 'break_times'])
+            ->where('user_id', $userID)
+            ->whereBetween('date', [$startDate, $endDate]) // 年と月でフィルタリング
+            ->orderBy('date', 'desc')
+            ->get();
 
-        return view('attendance.attendance', compact('attendances', 'userID','year', 'month'));
+        return view('attendance.attendance', compact('attendances', 'userID', 'year', 'month'));
     }
 
     public function update(AttendanceRequest $request)
     {
         $attendance = Attendance::find($request->id);
-        $date = $request->input('date');
+        $date = $request->input('date_' . $attendance->id);
 
-        $clockInTime = Carbon::createFromFormat('Y-m-d H:i:s', $date . ' ' . $request->input('clock_in_time'));
-        $clockOutTime = Carbon::createFromFormat('Y-m-d H:i:s', $date . ' ' . $request->input('clock_out_time'));
+        $clockInTime = Carbon::createFromFormat('Y-m-d H:i:s', $date . ' ' . $request->input('clock_in_time_' . $attendance->id));
+        $clockOutTime = Carbon::createFromFormat('Y-m-d H:i:s', $date . ' ' . $request->input('clock_out_time_' . $attendance->id));
 
 
         $attendanceData = [
@@ -106,7 +114,7 @@ class AttendanceController extends Controller
 
         $breakTimes = $attendance->break_times;
 
-        if($breakTimes->isNotEmpty()) {
+        if ($breakTimes->isNotEmpty()) {
             $totalBreakTime = 0;
 
             foreach ($breakTimes as $breakTime) {
@@ -137,5 +145,4 @@ class AttendanceController extends Controller
         Attendance::find($request->id)->delete();;
         return redirect()->back()->with('message', '勤怠情報が削除されました');
     }
-
 }

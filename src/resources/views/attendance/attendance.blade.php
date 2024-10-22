@@ -103,29 +103,29 @@
                                 <input type="hidden" name="id" value="{{ $attendance->id }}">
                                 <div class="modal__group">
                                     <div class="modal-form__group">
-                                        <label class="label" for="data" style="margin-right: 61px;">日付</label>
-                                        <input type="text" id="date" name="date" value="{{$attendance->date}}" class="modal-form__text">
+                                        <label class="label" for="date_{{ $attendance->id }}" style="margin-right: 61px;">日付</label>
+                                        <input type="text" id="date_{{ $attendance->id }}" name="date_{{ $attendance->id }}" value="{{ old('date_' . $attendance->id, $attendance->date) }}" class="modal-form__text">
                                     </div>
                                     <div class="modal-form__group">
-                                        <label class="label" for="clock_in_time" style="margin-right: 31px;">出勤時間</label>
-                                        <input type="text" id="clock_in_time" name="clock_in_time" value="{{ \Carbon\Carbon::parse($attendance->clock_in_time)->format('H:i:s')}}" class="modal-form__text">
+                                        <label class="label" for="clock_in_time_{{ $attendance->id }}" style="margin-right: 31px;">出勤時間</label>
+                                        <input type="text" id="clock_in_time_{{ $attendance->id }}" name="clock_in_time_{{ $attendance->id }}" value="{{ old('clock_in_time_' . $attendance->id, \Carbon\Carbon::parse($attendance->clock_in_time)->format('H:i:s')) }}" class="modal-form__text">
                                     </div>
                                     <div class="modal-form__group">
-                                        <label class="label" for="clock_out_time" style="margin-right: 31px;">退勤時間</label>
-                                        <input type="text" id="clock_out_time" name="clock_out_time" value="{{ \Carbon\Carbon::parse($attendance->clock_out_time)->format('H:i:s')}}" class="modal-form__text">
+                                        <label class="label" for="clock_out_time_{{ $attendance->id }}" style="margin-right: 31px;">退勤時間</label>
+                                        <input type="text" id="clock_out_time_{{ $attendance->id }}" name="clock_out_time_{{ $attendance->id }}" value="{{ old('clock_out_time_' . $attendance->id, \Carbon\Carbon::parse($attendance->clock_out_time)->format('H:i:s')) }}" class="modal-form__text">
                                     </div>
                                 </div>
-                                @error('date')
+                                @error("date_{$attendance->id}")
                                 <div class="modal-alert" style="color: #db2727; font-weight: bold;">
                                     {{ $message }}
                                 </div>
                                 @enderror
-                                @error('clock_out_time')
+                                @error("clock_in_time_{$attendance->id}")
                                 <div class="modal-alert" style="color: #db2727; font-weight: bold;">
                                     {{ $message }}
                                 </div>
                                 @enderror
-                                @error('clock_in_time')
+                                @error("clock_out_time_{$attendance->id}")
                                 <div class="modal-alert" style="color: #db2727; font-weight: bold;">
                                     {{ $message }}
                                 </div>
@@ -135,12 +135,12 @@
                                     <div class="modal__group">
                                         <div class="modal-form__group">
                                             <label class="label" for="break_start_time_{{$break_time->id}}">休憩開始時間</label>
-                                            <input type="text" id="break_start_time_{{$break_time->id}}" name="break_times[{{$break_time->id}}][break_start_time]" value=" {{ \Carbon\Carbon::parse($break_time->break_start_time)->format('H:i:s')}}" class="modal-form__text">
+                                            <input type="text" id="break_start_time_{{$break_time->id}}" name="break_times[{{$break_time->id}}][break_start_time]" value="{{ old('break_times.' . $break_time->id . '.break_start_time', \Carbon\Carbon::parse($break_time->break_start_time)->format('H:i:s')) }}" class="modal-form__text">
                                         </div>
 
                                         <div class="modal-form__group">
                                             <label class="label" for="break_end_time_{{$break_time->id}}">休憩終了時間</label>
-                                            <input type="text" id="break_end_time_{{$break_time->id}}" name="break_times[{{$break_time->id}}][break_end_time]" value="{{ \Carbon\Carbon::parse($break_time->break_end_time)->format('H:i:s')}}" class=" modal-form__text">
+                                            <input type="text" id="break_end_time_{{$break_time->id}}" name="break_times[{{$break_time->id}}][break_end_time]" value="{{ old('break_times.' . $break_time->id . '.break_end_time', \Carbon\Carbon::parse($break_time->break_end_time)->format('H:i:s')) }}" class=" modal-form__text">
                                         </div>
                                     </div>
                                     @error("break_times.$break_time->id.break_start_time")
