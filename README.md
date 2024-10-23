@@ -8,8 +8,12 @@
 
 ## URL
 デプロイのURLを貼り付けるログインなどがあれば注意事項など<br>
-- 開発環境 : http://localhost<br>
+- 開発環境 : http://localhost/<br>
 - phpmyadmin : http://localhost:8080/
+
+- 本番環境 : http://15.152.239.99/
+- phpmyadmin : http://15.152.239.99:8080/
+
 
 ## 機能一覧
 - ログイン機能
